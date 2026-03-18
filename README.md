@@ -76,3 +76,55 @@ python3 llm/switch_llm_model.py qwen2.5:7b
 
 python3 play_llm.py
 ```
+### 单次对话
+```shell
+curl http://localhost:11434/api/generate -d '{
+  "model": "qwen2.5:7b",
+  "prompt": "写一首关于秋天的短诗",
+  "stream": true
+}'
+
+curl http://localhost:11434/api/generate -d '{
+  "model": "qwen2.5:7b",
+  "prompt": "写一首关于秋天的短诗",
+  "stream": true
+}'
+```
+
+### 兼容openAI的接口
+```shell
+curl http://localhost:11434/v1/chat/completions -d '{
+  "model": "qwen2.5:7b",
+  "messages": [{"role": "user", "content": "你好！"}]
+}'
+```
+
+### 多轮对话
+
+```shell
+curl http://localhost:11434/api/chat -d '{
+  "model": "qwen2.5:7b",
+  "messages": [
+    {"role": "user", "content": "你好！"}
+  ],
+  "stream": false
+}'
+
+curl http://localhost:11434/api/chat -d '{
+  "model": "qwen2.5:7b",
+  "messages": [
+    {"role": "user", "content": "把历史对话记录输出"}
+  ],
+  "stream": false
+}'
+
+curl http://localhost:11434/api/chat -d '{
+  "model": "qwen2.5:7b",
+  "messages": [{"role": "user", "content": "讲个笑话"}],
+  "stream": false,
+  "options": {
+    "temperature": 0.8,
+    "num_ctx": 4096
+  }
+}'
+```
