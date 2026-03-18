@@ -7,10 +7,8 @@
 - 必须安装驱动后，再启动WSL，否则nvidia-smi报段错误。
 
 ### wsl CUDA安装
+- https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network
 ```shell
-https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network
-
-
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
 dpkg -i cuda-keyring_1.1-1_all.deb
 apt-get update
@@ -21,14 +19,8 @@ apt-get -y install cuda-toolkit-13-2
 ln -s /usr/lib/wsl/lib/nvidia-smi /usr/bin/nvidia-smi
 nvidia-smi
 ```
-
-
-
-
-
 ### pytorch
 - `pip3 install torch torchvision matplotlib`
-
 
 ### jupyter
 - `pip3 install notebook`
@@ -41,7 +33,6 @@ python3 -m notebook --allow-root
 
 #localhost:8888
 ```
-
 
 ### LLM
 ```shell
