@@ -77,7 +77,7 @@ class LocalLLMAgent:
         
         try:
             print (payload)
-            response = requests.post(self.api_url, json=payload, timeout=10)
+            response = requests.post(self.api_url, json=payload, timeout=30)
             response.raise_for_status()
             result = response.json()
             raw_output = result.get("response", "").strip().lower()

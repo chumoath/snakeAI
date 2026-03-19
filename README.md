@@ -40,7 +40,15 @@ pip3 install transformers gym pygame tensorboard modelscope
 
 pip3 install -r requirements.txt
 
-snap install ollama
+# 不能用snap安装ollama，否则ollama不能使用GPU
+# snap install ollama
+# 删除snap安装的ollama: snap remove --purge ollama
+curl -fsSL https://ollama.ai/install.sh | sh
+systemctl start ollama
+systemctl status ollama
+
+# 实时查看ollama日志
+journalctl -u ollama -f
 
 # 启动Ollama服务（如果未自动启动）
 ollama serve
